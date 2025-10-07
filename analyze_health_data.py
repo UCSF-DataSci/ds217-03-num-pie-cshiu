@@ -109,21 +109,29 @@ def find_abnormal_readings(data):
 
 
 def generate_report(stats, abnormal, total_readings):
-    """Generate formatted analysis report.
-
+    """Generate formatted analysis report.'
     Args:
-        stats: Dictionary of statistics
-        abnormal: Dictionary of abnormal counts
-        total_readings: Total number of readings
+    stats: Dictionary of statistics
+    abnormal: Dictionary of abnormal counts
+    total_readings: Total number of readings
 
     Returns:
-        Formatted string report
+    Formatted string report
     """
     # TODO: Create a formatted report string using f-strings
     # TODO: Include all statistics with proper formatting using .1f for decimals
-    # Example: f"Heart Rate: {stats['avg_heart_rate']:.1f} bpm"
+    # example: f"Heart Rate: {stats['avg_heart_rate']:.1f} bpm"
     # TODO: Include section headers and labels for readability
     # TODO: Include total_readings, all averages, and all abnormal counts
+
+    report = f"""
+    Health Data Analysis Report
+    
+    Average Heart Rate: {stats["avg_heart_rate"]:.1f} bpm
+    Average Systolic Blood Pressure: {stats["avg_systolic_bp"]:.1f} mmHg
+    Average Glucose Level: {stats["avg_glucose"]:.1 f} mg/dL
+    """
+    return report
     pass
 
 
@@ -137,18 +145,27 @@ def save_report(report, filename):
     # TODO: Write the report to a file using open() with 'w' mode
     # Example: with open(filename, 'w') as f:
     #              f.write(report)
+    with open(filename, "w") as f:
+        f.write(report)
     pass
 
 
 def main():
     """Main execution function."""
     # TODO: Load the data from 'health_data.csv' using load_data()
+    data = load_data("health_data.csv")
     # TODO: Calculate statistics using calculate_statistics()
+    stats = calculate_statistics(data)
     # TODO: Find abnormal readings using find_abnormal_readings()
+    abnormal = find_abnormal_readings(data)
     # TODO: Calculate total readings using len(data)
+    total_readings = len(data)
     # TODO: Generate report using generate_report()
+    report = generate_report(stats, abnormal, total_readings)
     # TODO: Save to 'output/analysis_report.txt' using save_report()
+    save_report(report, "output/analysis_report.txt")
     # TODO: Print success message
+    print("Analysis Complete! Report saved to output/analysis_report.txt")
     pass
 
 
