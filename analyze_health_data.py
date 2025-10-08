@@ -46,27 +46,18 @@ def calculate_statistics(data):
     """
 
     # TODO: Calculate average heart rate using data['heart_rate'].mean()
-    def avg_heart_rate(data):
-        """Calculate average heart rate."""
-        avg_heart_rate = data["heart_rate"].mean()
-        return avg_heart_rate
+    avg_heart_rate = data["heart_rate"].mean()
 
     # TODO: Calculate average systolic BP using data['blood_pressure_systolic'].mean()
-    def avg_systolic_BP(data):
-        """Calculate average systolic blood pressure."""
-        avg_systolic_bp = data["blood_pressure_systolic"].mean()
-        return avg_systolic_bp
+    avg_systolic_bp = data["blood_pressure_systolic"].mean()
 
     # TODO: Calculate average glucose level using data['glucose_level'].mean()
-    def avg_glucose(data):
-        """Calculate average glucose level."""
-        avg_glucose = data["glucose_level"].mean()
-        return avg_glucose
+    avg_glucose = data["glucose_level"].mean()
 
     # TODO: Return as dictionary with keys: 'avg_heart_rate', 'avg_systolic_bp', 'avg_glucose'
     return {
         "avg_heart_rate": avg_heart_rate,
-        "avg_systolic_bp": avg_systolic_BP,
+        "avg_systolic_bp": avg_systolic_bp,
         "avg_glucose": avg_glucose,
     }
 
@@ -87,12 +78,12 @@ def find_abnormal_readings(data):
     # Example: high_hr_count = len(data[data['heart_rate'] > 90])
     # Or: high_hr_count = (data['heart_rate'] > 90).sum()
     def high_hr_count(data):
-        np.sum((data["heart_rate"] > 90))
+        np.sum(data["heart_rate"] > 90)
 
     # TODO: Count readings where systolic BP > 130 using boolean indexing
     # Example: high_bp_count = len(data[data['blood_pressure_systolic'] > 130])
     def high_bp_count(data):
-        np.sum((data["blood_pressure_systolic"] > 130))
+        np.sum(data["blood_pressure_systolic"] > 130)
 
     # TODO: Count readings where glucose > 110 using boolean indexing
     # Example: high_glucose_count = len(data[data['glucose_level'] > 110])
@@ -109,14 +100,14 @@ def find_abnormal_readings(data):
 
 
 def generate_report(stats, abnormal, total_readings):
-    """Generate formatted analysis report.'
+    """Generate formatted analysis report.
     Args:
-    stats: Dictionary of statistics
-    abnormal: Dictionary of abnormal counts
-    total_readings: Total number of readings
+        stats: Dictionary of statistics
+        abnormal: Dictionary of abnormal counts
+        total_readings: Total number of readings
 
     Returns:
-    Formatted string report
+        Formatted string report
     """
     # TODO: Create a formatted report string using f-strings
     # TODO: Include all statistics with proper formatting using .1f for decimals
@@ -129,7 +120,11 @@ def generate_report(stats, abnormal, total_readings):
     
     Average Heart Rate: {stats["avg_heart_rate"]:.1f} bpm
     Average Systolic Blood Pressure: {stats["avg_systolic_bp"]:.1f} mmHg
-    Average Glucose Level: {stats["avg_glucose"]:.1 f} mg/dL
+    Average Glucose Level: {stats["avg_glucose"]:.1f} mg/dL
+
+    High Heart Rate (>90 bpm): {abnormal["high_heart_rate"]} readings
+    Systolic BP (>130 mmHg): {abnormal["high_blood_pressure"]} readings
+    Glucose (>140 mg/dL): {abnormal["high_glucose"]} readings
     """
     return report
     pass
@@ -170,5 +165,5 @@ def main():
     pass
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": 
+    main ()
