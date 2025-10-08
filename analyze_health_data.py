@@ -163,9 +163,8 @@ def main():
     # TODO: Generate report using generate_report()
     report = generate_report(stats, abnormal, total_readings)
     # TODO: Save to 'output/analysis_report.txt' using save_report()
-    with open("output/analysis_report.txt", "w") as f:
-        f.write(report)
-        save_report(report, "output/analysis_report.txt")
+    save_report(report, "output/analysis_report.txt")
+
     # TODO: Print success message
     print("Analysis Complete! Report saved to output/analysis_report.txt")
     pass
